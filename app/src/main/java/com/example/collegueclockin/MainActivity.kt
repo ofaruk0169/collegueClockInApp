@@ -11,13 +11,22 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -42,6 +51,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MyAppContent() {
+    var password by remember { mutableStateOf("") }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -51,7 +62,7 @@ fun MyAppContent() {
             text = "Colleague Clock-in Application"
         )
 
-        Spacer(modifier = Modifier.height(66.dp))
+        Spacer(modifier = Modifier.height(46.dp))
 
         //Button layout
 
@@ -65,23 +76,42 @@ fun MyAppContent() {
                 onClick = {
                     // Handle button 1 click
                 },
-                modifier = Modifier.weight(1f).padding(end = 8.dp)
-            ) {
-                Text(text = "Sign In")
-            }
-
-            Button(
-                onClick = {
-                    // Handle button 2 click
-                },
-                modifier = Modifier.weight(1f)
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(end = 8.dp)
             ) {
                 Text(text = "Staff Status")
             }
         }
 
+        //Password input
+        TextField(
+            value = password,
+            onValueChange = {
+                password = it
+            },
+            label = { Text("Enter Password") },
+            visualTransformation = PasswordVisualTransformation(),
+            keyboardOptions = KeyboardOptions.Default.copy(
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Done
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 16.dp),
+        )
 
-
+        //submit button
+        Button(
+            onClick = {
+                // Handle button 1 click
+            },
+            modifier = Modifier
+                .height(66.dp)
+                .padding(10.dp)
+        ) {
+            Text(text = "Enter")
+        }
 
     }
 }

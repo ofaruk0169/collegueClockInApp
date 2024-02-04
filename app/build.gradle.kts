@@ -1,7 +1,19 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    //db
+    id("app.cash.sqldelight") version "2.0.1"
 }
+
+
+sqldelight {
+    databases {
+        create("Database") {
+            packageName.set("com.example")
+        }
+    }
+}
+
 
 android {
     namespace = "com.example.collegueclockin"

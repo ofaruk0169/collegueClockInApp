@@ -93,7 +93,7 @@ fun MyAppContent() {
             onValueChange = {
                 password = it
             },
-            label = { Text("Enter Password") },
+            label = { Text("Sign In Code") },
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions.Default.copy(
                 keyboardType = KeyboardType.Number,

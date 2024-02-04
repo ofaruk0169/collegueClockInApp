@@ -3,3 +3,22 @@ CREATE TABLE personEntity (
     firstName TEXT NOT NULL,
     lastName TEXT NOT NULL
 );
+
+getPersonById:
+SELECT *
+FROM personEntity
+WHERE id = :id;
+
+getAllPersons:
+SELECT *
+FROM personEntity;
+
+insertPerson:
+INSERT OR REPLACE
+INTO personEntity
+VALUES (?, ?, ?);
+
+deletePersonById:
+DELETE FROM personEntity
+WHERE id = :id;
+

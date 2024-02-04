@@ -79,4 +79,7 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
+    //sql delight
+    implementation("app.cash.sqldelight:android-driver:2.0.1")
+
 }

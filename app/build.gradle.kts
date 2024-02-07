@@ -5,8 +5,6 @@ plugins {
     id("app.cash.sqldelight")
 }
 
-
-
 android {
     namespace = "com.example.collegueclockin"
     compileSdk = 34
@@ -44,7 +42,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.7"
     }
     packaging {
         resources {

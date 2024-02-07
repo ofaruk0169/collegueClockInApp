@@ -4,6 +4,13 @@ CREATE TABLE collegueEntity (
     lastName TEXT NOT NULL
 );
 
+
+-- Insert initial data
+INSERT INTO collegueEntity (id, firstName, lastName) VALUES
+    (1, 'John', 'Doe'),
+    (2, 'Jane', 'Smith'),
+    (3, 'Bob', 'Johnson');
+
 getPersonById:
 SELECT *
 FROM collegueEntity

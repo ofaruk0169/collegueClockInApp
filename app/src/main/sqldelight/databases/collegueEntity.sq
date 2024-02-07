@@ -1,4 +1,4 @@
-CREATE TABLE personEntity (
+CREATE TABLE collegueEntity (
     id INTEGER NOT NULL PRIMARY KEY,
     firstName TEXT NOT NULL,
     lastName TEXT NOT NULL
@@ -6,19 +6,19 @@ CREATE TABLE personEntity (
 
 getPersonById:
 SELECT *
-FROM personEntity
+FROM collegueEntity
 WHERE id = :id;
 
 getAllPersons:
 SELECT *
-FROM personEntity;
+FROM collegueEntity;
 
 insertPerson:
 INSERT OR REPLACE
-INTO personEntity
+INTO collegueEntity
 VALUES (?, ?, ?);
 
 deletePersonById:
-DELETE FROM personEntity
+DELETE FROM collegueEntity
 WHERE id = :id;
 

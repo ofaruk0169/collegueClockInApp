@@ -1,18 +1,10 @@
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    //db
-    id("app.cash.sqldelight") version "2.0.1"
+    id("app.cash.sqldelight")
 }
 
-
-sqldelight {
-    databases {
-        create("Database") {
-            packageName.set("com.example")
-        }
-    }
-}
 
 
 android {
@@ -61,6 +53,8 @@ android {
     }
 }
 
+
+
 dependencies {
 
     implementation("androidx.core:core-ktx:1.12.0")
@@ -79,7 +73,16 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
-    //sql delight
+    // SQLDelight - SQLite database, caching
     implementation("app.cash.sqldelight:android-driver:2.0.1")
+    implementation("app.cash.sqldelight:coroutines-extensions:2.0.1")
+}
 
+sqldelight {
+    databases {
+        create("CollegueClockInDatabase") {
+            packageName.set("com.example.collegueclockin")
+            schemaOutputDirectory.set(file("src/main/sqldelight/databases"))
+        }
+    }
 }

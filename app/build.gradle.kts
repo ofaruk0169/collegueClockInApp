@@ -74,6 +74,13 @@ dependencies {
     // SQLDelight - SQLite database, caching
     implementation("app.cash.sqldelight:android-driver:2.0.1")
     implementation("app.cash.sqldelight:coroutines-extensions:2.0.1")
+
+    //Koin
+    val koin_version = "3.5.3"
+    implementation ("io.insert-koin:koin-android:$koin_version")
+    implementation ("io.insert-koin:koin-androidx-compose:$koin_version")
+
+
 }
 
 sqldelight {

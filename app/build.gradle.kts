@@ -80,6 +80,10 @@ dependencies {
     implementation ("io.insert-koin:koin-android:$koin_version")
     implementation ("io.insert-koin:koin-androidx-compose:$koin_version")
 
+    //Compose Navigation
+    val nav_version = "2.7.7"
+    implementation("androidx.navigation:navigation-compose:$nav_version")
+
 
 }
 

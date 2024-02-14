@@ -9,7 +9,7 @@ import com.example.collegueclockin.data.CollegueDataSource
 import databases.CollegueEntity
 import kotlinx.coroutines.launch
 
-class PersonListViewModel(
+class CollegueListViewModel(
     private val collegueDataSource: CollegueDataSource
 ): ViewModel() {
 

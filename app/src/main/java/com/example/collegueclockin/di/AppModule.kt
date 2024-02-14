@@ -9,7 +9,7 @@ import org.koin.dsl.module
 val appModule = module {
 
     //Declare CollegueDataSource singleton here
-    single<CollegueDataSource> {CollegueDataSourceImpl(get())}
+    single<CollegueDataSource> { CollegueDataSourceImpl(get()) }
 
     // Declare CollegueListViewModel with ViewModel DSL
     viewModel { CollegueListViewModel(get()) }

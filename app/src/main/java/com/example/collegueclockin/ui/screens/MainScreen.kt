@@ -27,7 +27,7 @@ import androidx.navigation.NavController
 import com.example.collegueclockin.ui.navigation.Screen
 
 @Composable
-fun MyAppContent(navController: NavController) {
+fun MainAppContent(navController: NavController) {
     var password by remember { mutableStateOf("") }
 
     Column(

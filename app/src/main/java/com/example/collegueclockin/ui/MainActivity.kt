@@ -18,6 +18,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -29,99 +30,34 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.example.collegueclockin.ui.navigation.Navigation
+import com.example.collegueclockin.ui.navigation.Screen
 import com.example.collegueclockin.ui.theme.CollegueClockInTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            CollegueClockInTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    MyAppContent()
-                }
-            }
+            Navigation()
         }
     }
 }
 
 @Composable
-fun MyAppContent() {
-    var password by remember { mutableStateOf("") }
+fun MyAppContent(navController: NavController) {
+    // Content of MyAppContent goes here
+    // ...
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = "Colleague Clock-in Application"
-        )
-
-        Spacer(modifier = Modifier.height(46.dp))
-
-        //Button layout test
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Button(
-                onClick = {
-                    // Handle button 1 click
-                },
-                modifier = Modifier
-                    .weight(1f)
-                    .padding(end = 8.dp)
-            ) {
-                Text(text = "Staff Status")
-            }
-        }
-
-        //Password input
-        TextField(
-            value = password,
-            onValueChange = {
-                password = it
-            },
-            label = { Text("Sign In Code") },
-            visualTransformation = PasswordVisualTransformation(),
-            keyboardOptions = KeyboardOptions.Default.copy(
-                keyboardType = KeyboardType.Number,
-                imeAction = ImeAction.Done
-            ),
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 16.dp),
-        )
-
-        //submit button
-        Button(
-            onClick = {
-                // Handle button 1 click
-            },
-            modifier = Modifier
-                .height(66.dp)
-                .padding(10.dp)
-        ) {
-            Text(text = "Enter")
-        }
-
+    // Navigate to MainScreen when the app is first launched
+    LaunchedEffect(true) {
+        navController.navigate(Screen.MainScreen.route)
     }
+
 }
 
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    CollegueClockInTheme {
-        MyAppContent()
-    }
-}
+
+
+

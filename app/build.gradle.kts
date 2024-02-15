@@ -1,9 +1,24 @@
 
 plugins {
+    //id("com.android.application")
+    //id("org.jetbrains.kotlin.android")
+    //id("app.cash.sqldelight")
+
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("app.cash.sqldelight")
+    kotlin("android")
+    kotlin("kapt")
+    id("kotlin-parcelize")
+    id("org.jetbrains.kotlin.plugin.serialization")
+    id("app.cash.sqldelight") version "2.0.1"
 }
+
+/*
+repositories {
+    google()
+    mavenCentral()
+}
+*/
+
 
 android {
     namespace = "com.example.collegueclockin"
@@ -42,7 +57,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.7"
+        kotlinCompilerExtensionVersion = "1.5.8"
     }
     packaging {
         resources {
@@ -86,6 +101,8 @@ dependencies {
 
 
 }
+
+
 
 sqldelight {
     databases {

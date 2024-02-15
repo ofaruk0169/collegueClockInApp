@@ -23,11 +23,15 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.collegueclockin.ui.navigation.Screen
+import com.example.collegueclockin.viewmodels.CollegueListViewModel
 
 @Composable
 fun MainAppContent(navController: NavController) {
+
+    //val viewModel: CollegueListViewModel = viewModel()
     var password by remember { mutableStateOf("") }
 
     Column(

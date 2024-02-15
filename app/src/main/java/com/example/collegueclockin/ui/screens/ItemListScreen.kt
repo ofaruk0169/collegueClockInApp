@@ -33,7 +33,6 @@ import com.example.collegueclockin.ui.navigation.Screen
 @Composable
 fun ItemListScreen() {
 
-/*
     val viewModel: CollegueListViewModel = viewModel()
 
     // observing the list of items from the ViewModel
@@ -49,11 +48,10 @@ fun ItemListScreen() {
     }
 
 
- */
 
     //below is screen test
 
-    Column(
+   /* Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
@@ -90,6 +88,6 @@ fun ItemListScreen() {
         ) {
             Text(text = "Enter")
         }
-    }
+    }*/
 
 }

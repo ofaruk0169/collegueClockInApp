@@ -28,12 +28,18 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+
+//import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.collegueclockin.ui.navigation.Screen
+import org.koin.androidx.compose.koinViewModel
+
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 @Composable
 fun ItemListScreen() {
 
-    val viewModel: CollegueListViewModel = viewModel()
+    val viewModel: CollegueListViewModel = koinViewModel()
 
     // observing the list of items from the ViewModel
     val itemList by viewModel.collegues.collectAsState(initial = emptyList())

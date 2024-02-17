@@ -20,10 +20,8 @@ val appModule = module {
     viewModel { CollegueListViewModel(get()) }
 
     single { provideSqlDriver(androidContext()) }
-    single { providePersonDataSource(get()) }
-
+    single { provideCollegueDataSource(get()) }
 }
-
 
 
 fun provideSqlDriver(app: Context): SqlDriver {
@@ -34,6 +32,6 @@ fun provideSqlDriver(app: Context): SqlDriver {
     )
 }
 
-fun providePersonDataSource(driver: SqlDriver): CollegueDataSource {
+fun provideCollegueDataSource(driver: SqlDriver): CollegueDataSource {
     return CollegueDataSourceImpl(CollegueClockInDatabase(driver))
 }

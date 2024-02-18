@@ -102,6 +102,10 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:$nav_version")
 
 
+    //for icons
+    implementation("androidx.compose.material3:material3:1.2.0")
+
+
 }
 
 

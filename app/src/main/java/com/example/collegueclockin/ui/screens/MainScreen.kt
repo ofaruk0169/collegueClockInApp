@@ -9,6 +9,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.outlined.Add
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -23,13 +30,29 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.collegueclockin.ui.navigation.Screen
-import com.example.collegueclockin.viewmodels.CollegueListViewModel
 
 @Composable
 fun MainAppContent(navController: NavController) {
+
+    val tabItems = listOf(
+        TabItem(
+            title = "Sign In",
+            unselectedIcon = Icons.Outlined.Home,
+            selectedIcon = Icons.Filled.Home
+        ),
+        TabItem(
+            title = "List",
+            unselectedIcon = Icons.Outlined.Search,
+            selectedIcon = Icons.Filled.Search
+        ),
+        TabItem(
+            title = "Add",
+            unselectedIcon = Icons.Outlined.Add,
+            selectedIcon = Icons.Filled.Add
+        ),
+    )
 
     //val viewModel: CollegueListViewModel = viewModel()
     var password by remember { mutableStateOf("") }
@@ -98,3 +121,9 @@ fun MainAppContent(navController: NavController) {
         }
     }
 }
+
+data class TabItem(
+    val title: String,
+    val unselectedIcon: ImageVector,
+    val selectedIcon: ImageVector
+)

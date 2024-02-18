@@ -1,8 +1,7 @@
-package com.example.collegueclockin
+package com.example.colleagueclockin
 
 import android.app.Application
-import app.cash.sqldelight.driver.android.AndroidSqliteDriver
-import com.example.collegueclockin.di.appModule
+import com.example.colleagueclockin.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin

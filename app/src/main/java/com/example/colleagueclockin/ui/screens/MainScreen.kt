@@ -1,4 +1,4 @@
-package com.example.collegueclockin.ui.screens
+package com.example.colleagueclockin.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,10 +23,8 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.collegueclockin.ui.navigation.Screen
-import com.example.collegueclockin.viewmodels.CollegueListViewModel
+import com.example.colleagueclockin.ui.navigation.Screen
 
 @Composable
 fun MainAppContent(navController: NavController) {

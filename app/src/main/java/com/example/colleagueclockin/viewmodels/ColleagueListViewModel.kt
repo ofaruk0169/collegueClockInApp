@@ -1,22 +1,22 @@
-package com.example.collegueclockin.viewmodels
+package com.example.colleagueclockin.viewmodels
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.collegueclockin.data.CollegueDataSource
-import databases.CollegueEntity
+import com.example.colleagueclockin.data.ColleagueDataSource
+import databases.ColleagueEntity
 import kotlinx.coroutines.launch
 
-class CollegueListViewModel(
-    private val collegueDataSource: CollegueDataSource
+class ColleagueListViewModel(
+    private val colleagueDataSource: ColleagueDataSource
 ): ViewModel() {
 
 
-    val collegues = collegueDataSource.getAllPersons()
+    val colleagues = colleagueDataSource.getAllColleagues()
 
-    var personDetails by mutableStateOf<CollegueEntity?>(null)
+    var colleagueDetails by mutableStateOf<ColleagueEntity?>(null)
         private set
 
     var firstNameText by mutableStateOf("")
@@ -25,12 +25,12 @@ class CollegueListViewModel(
     var lastNameText by mutableStateOf("")
         private set
 
-    fun onInsertPersonClick() {
+    fun onInsertColleagueClick() {
         if(firstNameText.isBlank() || lastNameText.isBlank()) {
             return
         }
         viewModelScope.launch {
-            collegueDataSource.insertPerson(firstNameText, lastNameText)
+            colleagueDataSource.insertColleague(firstNameText, lastNameText)
             firstNameText = ""
             lastNameText = ""
         }
@@ -38,13 +38,13 @@ class CollegueListViewModel(
 
     fun onDeleteClick(id: Long) {
         viewModelScope.launch {
-            collegueDataSource.deletePersonById(id)
+            colleagueDataSource.deleteColleagueById(id)
         }
     }
 
-    fun getPersonById(id: Long) {
+    fun getColleagueById(id: Long) {
         viewModelScope.launch {
-            personDetails = collegueDataSource.getPersonById(id)
+            colleagueDetails = colleagueDataSource.getColleagueById(id)
         }
     }
 
@@ -56,7 +56,7 @@ class CollegueListViewModel(
         lastNameText = value
     }
 
-    fun onPersonDetailsDialogDismiss() {
-        personDetails = null
+    fun onColleagueDetailsDialogDismiss() {
+        colleagueDetails = null
     }
 }

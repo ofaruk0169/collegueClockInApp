@@ -1,8 +1,5 @@
 
 plugins {
-    //id("com.android.application")
-    //id("org.jetbrains.kotlin.android")
-    //id("app.cash.sqldelight")
 
     id("com.android.application")
     kotlin("android")
@@ -12,20 +9,15 @@ plugins {
     id("app.cash.sqldelight") version "2.0.1"
 }
 
-/*
-repositories {
-    google()
-    mavenCentral()
-}
-*/
+
 
 
 android {
-    namespace = "com.example.collegueclockin"
+    namespace = "com.example.colleagueclockin"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.collegueclockin"
+        applicationId = "com.example.colleagueclockin"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -108,8 +100,8 @@ dependencies {
 
 sqldelight {
     databases {
-        create("CollegueClockInDatabase") {
-            packageName.set("com.example.collegueclockin")
+        create("ColleagueClockInDatabase") {
+            packageName.set("com.example.colleagueclockin")
             schemaOutputDirectory.set(file("src/main/sqldelight/databases"))
         }
     }

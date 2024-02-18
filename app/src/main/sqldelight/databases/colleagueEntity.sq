@@ -1,30 +1,30 @@
-CREATE TABLE collegueEntity (
+CREATE TABLE colleagueEntity (
     id INTEGER NOT NULL PRIMARY KEY,
     firstName TEXT NOT NULL,
     lastName TEXT NOT NULL
 );
 
 -- Insert initial data
-INSERT INTO collegueEntity (id, firstName, lastName) VALUES
+INSERT INTO colleagueEntity (id, firstName, lastName) VALUES
     (1, 'John', 'Doe'),
     (2, 'Jane', 'Smith'),
     (3, 'Bob', 'Johnson');
 
-getPersonById:
+getColleagueById:
 SELECT *
-FROM collegueEntity
+FROM colleagueEntity
 WHERE id = :id;
 
-getAllPersons:
+getAllColleagues:
 SELECT *
-FROM collegueEntity;
+FROM colleagueEntity;
 
-insertPerson:
+insertColleague:
 INSERT OR REPLACE
-INTO collegueEntity
+INTO colleagueEntity
 VALUES (?, ?, ?);
 
-deletePersonById:
-DELETE FROM collegueEntity
+deleteColleagueById:
+DELETE FROM colleagueEntity
 WHERE id = :id;
 

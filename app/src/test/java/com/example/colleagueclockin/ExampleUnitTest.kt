@@ -1,4 +1,4 @@
-package com.example.collegueclockin
+package com.example.colleagueclockin
 
 import org.junit.Test
 

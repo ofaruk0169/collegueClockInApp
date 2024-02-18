@@ -1,4 +1,4 @@
-package com.example.collegueclockin.ui.theme
+package com.example.colleagueclockin.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -30,14 +30,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import androidx.navigation.NavController
+import com.example.colleagueclockin.ui.navigation.Screen
 import databases.ColleagueEntity
 import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
 fun ItemListScreen(
+    navController: NavController,
     viewModel: ColleagueListViewModel = koinViewModel()
 ) {
+
     //collect data here from viewmodel
     val colleagues = viewModel.colleagues
         .collectAsState(initial = emptyList())
@@ -78,7 +82,7 @@ fun ItemListScreen(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Button(onClick = {
-                    //action for first button
+                    navController.navigate(Screen.MainScreen.route)
                 }) {
                     Text("Clock In/Out")
                 }

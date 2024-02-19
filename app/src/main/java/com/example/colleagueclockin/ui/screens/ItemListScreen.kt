@@ -17,6 +17,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Delete
+import androidx.compose.material3.Button
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -36,10 +38,11 @@ import org.koin.androidx.compose.koinViewModel
 fun ItemListScreen(
     viewModel: ColleagueListViewModel = koinViewModel()
 ) {
-
+    //collect data here from viewmodel
     val colleagues = viewModel.colleagues
         .collectAsState(initial = emptyList())
         .value
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -67,7 +70,28 @@ fun ItemListScreen(
                     )
                 }
             }
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Button(onClick = {
+                    //action for first button
+                }) {
+                    Text("Clock In/Out")
+                }
+
+                Button(onClick = {
+                    //action for first button
+                }) {
+                    Text("Add Staff")
+                }
+            }
         }
+
+        //person detail dialog
         viewModel.colleagueDetails?.let { details ->
             Dialog(onDismissRequest = viewModel::onColleagueDetailsDialogDismiss) {
                 Box(
@@ -81,7 +105,13 @@ fun ItemListScreen(
                 }
             }
         }
+        //emd of person detail dialog.
+
     }
+    
+    
+    
+    
 }
 
 @Composable
@@ -102,6 +132,13 @@ fun ColleagueItem (
             fontSize = 22.sp,
             fontWeight = FontWeight.Bold
         )
+        Text(
+            text = "On Shift?"
+        )
+        Checkbox(
+            checked = true,
+            onCheckedChange = {  }
+        )
         IconButton(onClick = onDeleteClick) {
             Icon(
                 imageVector = Icons.Outlined.Delete,
@@ -111,22 +148,3 @@ fun ColleagueItem (
         }
     }
 }
-
-
-
-
-
-/*    val viewModel: CollegueListViewModel = koinViewModel()
-    // observing the list of items from the ViewModel
-    val itemList by viewModel.collegues.collectAsState(initial = emptyList())
-
-    // Display the list using LazyColumn
-    LazyColumn {
-        items(itemList.size) { index ->
-            val item = itemList[index]
-            // Each item in the list
-            Text(text = "${item.firstName} ${item.lastName}")
-        }
-    }*/
-
-

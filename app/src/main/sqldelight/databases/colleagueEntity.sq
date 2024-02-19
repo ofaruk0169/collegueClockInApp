@@ -8,7 +8,8 @@ CREATE TABLE colleagueEntity (
 INSERT INTO colleagueEntity (id, firstName, lastName) VALUES
     (1, 'John', 'Doe'),
     (2, 'Jane', 'Smith'),
-    (3, 'Bob', 'Johnson');
+    (3, 'Bob', 'Johnson'),
+    (4, 'Jon', 'Bobson');
 
 getColleagueById:
 SELECT *

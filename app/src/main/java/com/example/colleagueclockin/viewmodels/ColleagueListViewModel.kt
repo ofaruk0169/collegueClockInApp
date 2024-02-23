@@ -15,8 +15,6 @@ class ColleagueListViewModel(
     private val colleagueDataSource: ColleagueDataSource
 ): ViewModel() {
 
-
-
     val colleagues = colleagueDataSource.getAllColleagues()
 
     private var _showInputDialog: MutableState<Boolean> = mutableStateOf(false)
@@ -31,14 +29,18 @@ class ColleagueListViewModel(
     var lastNameText by mutableStateOf("")
         private set
 
+    var loginNumberText by mutableStateOf("") // New field for login number
+        private set
+
     fun onInsertColleagueClick() {
-        if(firstNameText.isBlank() || lastNameText.isBlank()) {
+        if(firstNameText.isBlank() || lastNameText.isBlank() || loginNumberText.isBlank()) {
             return
         }
         viewModelScope.launch {
-            colleagueDataSource.insertColleague(firstNameText, lastNameText)
+            colleagueDataSource.insertColleague(firstNameText, lastNameText, loginNumberText)
             firstNameText = ""
             lastNameText = ""
+            loginNumberText = ""
         }
     }
 
@@ -73,4 +75,5 @@ class ColleagueListViewModel(
     fun addStaffDismiss() {
         _showInputDialog.value = false
     }
+
 }

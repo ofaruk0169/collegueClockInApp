@@ -1,31 +1,36 @@
+-- Modify the table creation script
 CREATE TABLE colleagueEntity (
     id INTEGER NOT NULL PRIMARY KEY,
     firstName TEXT NOT NULL,
-    lastName TEXT NOT NULL
+    lastName TEXT NOT NULL,
+    loginNumber TEXT NOT NULL
 );
 
 -- Insert initial data
-INSERT INTO colleagueEntity (id, firstName, lastName) VALUES
-    (1, 'John', 'Doe'),
-    (2, 'Jane', 'Smith'),
-    (3, 'Bob', 'Johnson'),
-    (4, 'Jon', 'Bobson');
+INSERT INTO colleagueEntity (id, firstName, lastName, loginNumber) VALUES
+    (1, 'John', 'Doe', '12345'),
+    (2, 'Jane', 'Smith', '54321'),
+    (3, 'Bob', 'Johnson', '01694'),  -- Include 0 as a valid login_number
+    (4, 'Jon', 'Bobson', '55444');
 
+-- Modify the getColleagueById query
 getColleagueById:
 SELECT *
 FROM colleagueEntity
 WHERE id = :id;
 
+-- Modify the getAllColleagues query
 getAllColleagues:
 SELECT *
 FROM colleagueEntity;
 
+-- Modify the insertColleague query
 insertColleague:
 INSERT OR REPLACE
-INTO colleagueEntity
-VALUES (?, ?, ?);
+INTO colleagueEntity (id, firstName, lastName, loginNumber)
+VALUES (?, ?, ?, ?);
 
+-- Modify the deleteColleagueById query
 deleteColleagueById:
 DELETE FROM colleagueEntity
 WHERE id = :id;
-

@@ -42,6 +42,8 @@ import com.example.colleagueclockin.ui.navigation.Screen
 import databases.ColleagueEntity
 import org.koin.androidx.compose.koinViewModel
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.text.input.KeyboardType
 
 
@@ -50,6 +52,12 @@ fun ItemListScreen(
     navController: NavController,
     viewModel: ColleagueListViewModel = koinViewModel()
 ) {
+
+    // Define mutable state variables for Composable functions
+    var firstName by remember { mutableStateOf("") }
+/*    var lastName by remember { mutableStateOf("") }
+    var staffPin by remember { mutableStateOf("") }
+    var reenterPin by remember { mutableStateOf("") }*/
 
 
     //collect data here from viewmodel
@@ -74,9 +82,6 @@ fun ItemListScreen(
                 items(colleagues) { colleague ->
                     ColleagueItem (
                         colleague = colleague,
-                        onItemClick = {
-                            viewModel.getColleagueById(colleague.id)
-                        },
                         onDeleteClick = {
                             viewModel.onDeleteClick(colleague.id)
                         },
@@ -131,8 +136,8 @@ fun ItemListScreen(
                         // Your input fields or other content here
 
                         TextField(
-                            value = "",
-                            onValueChange = {},
+                            value = firstName,
+                            onValueChange = {newValue -> firstName = newValue },
                             placeholder = { Text("Enter Staff First Name") },
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -230,7 +235,8 @@ fun ColleagueItem (
             fontWeight = FontWeight.Bold
         )
         Text(
-            text = "On Shift?"
+            text = "Shift Status",
+
         )
         Checkbox(
             checked = true,

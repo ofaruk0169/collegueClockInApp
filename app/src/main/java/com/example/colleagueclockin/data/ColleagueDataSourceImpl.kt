@@ -33,9 +33,9 @@ class ColleagueDataSourceImpl (
         }
     }
 
-    override suspend fun insertColleague(firstName: String, lastName: String, id: Long?) {
+    override suspend fun insertColleague(firstName: String, lastName: String, loginNumber: String,id: Long?) {
         withContext(Dispatchers.IO) {
-            queries.insertColleague(id, firstName, lastName)
+            queries.insertColleague(id, firstName, lastName, loginNumber)
         }
     }
 }

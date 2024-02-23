@@ -45,6 +45,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 
 
 @Composable
@@ -52,13 +53,6 @@ fun ItemListScreen(
     navController: NavController,
     viewModel: ColleagueListViewModel = koinViewModel()
 ) {
-
-    // Define mutable state variables for Composable functions
-    var firstName by remember { mutableStateOf("") }
-/*    var lastName by remember { mutableStateOf("") }
-    var staffPin by remember { mutableStateOf("") }
-    var reenterPin by remember { mutableStateOf("") }*/
-
 
     //collect data here from viewmodel
     val colleagues = viewModel.colleagues
@@ -136,8 +130,8 @@ fun ItemListScreen(
                         // Your input fields or other content here
 
                         TextField(
-                            value = firstName,
-                            onValueChange = {newValue -> firstName = newValue },
+                            value = viewModel.firstNameText,
+                            onValueChange = viewModel::onFirstNameChange,
                             placeholder = { Text("Enter Staff First Name") },
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -145,8 +139,8 @@ fun ItemListScreen(
                         )
 
                         TextField(
-                            value = "",
-                            onValueChange = {},
+                            value = viewModel.lastNameText,
+                            onValueChange = viewModel::onLastNameChange,
                             placeholder = { Text("Enter Staff Second Name") },
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -154,9 +148,10 @@ fun ItemListScreen(
                         )
 
                         TextField(
-                            value = "",
-                            onValueChange = {},
+                            value = viewModel.pinText,
+                            onValueChange = viewModel::onPinChange,
                             placeholder = { Text("Enter Staff Pin") },
+                            visualTransformation = PasswordVisualTransformation(),
                             keyboardOptions = KeyboardOptions.Default.copy(
                                 keyboardType = KeyboardType.Number
                             ),
@@ -166,9 +161,10 @@ fun ItemListScreen(
                         )
 
                         TextField(
-                            value = "",
-                            onValueChange = {},
+                            value = viewModel.pinReenterText,
+                            onValueChange = viewModel::onPinReenterChange,
                             placeholder = { Text("Re-enter Pin") },
+                            visualTransformation = PasswordVisualTransformation(),
                             keyboardOptions = KeyboardOptions.Default.copy(
                                 keyboardType = KeyboardType.Number
                             ),
@@ -187,7 +183,7 @@ fun ItemListScreen(
                             Button(
                                 onClick = {
                                     // Add logic to handle adding staff here
-                                    viewModel.addStaffDismiss()
+                                    viewModel.onInsertColleagueClick()
                                 }
                             ) {
                                 Text("Add")
@@ -225,22 +221,27 @@ fun ColleagueItem (
 ) {
     Row(
         modifier = modifier
-            .clickable { onItemClick() },
+            .clickable { onItemClick() }
+            .fillMaxWidth()
+            .padding(16.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
             text = colleague.firstName,
             fontSize = 22.sp,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.weight(1f)
         )
         Text(
             text = "Shift Status",
+            modifier = Modifier.weight(1f)
 
         )
         Checkbox(
             checked = true,
-            onCheckedChange = {  }
+            onCheckedChange = {  },
+            modifier = Modifier.weight(1f)
         )
         IconButton(onClick = onDeleteClick) {
             Icon(

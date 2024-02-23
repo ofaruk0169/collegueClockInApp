@@ -29,18 +29,22 @@ class ColleagueListViewModel(
     var lastNameText by mutableStateOf("")
         private set
 
-    var loginNumberText by mutableStateOf("") // New field for login number
+    var pinText by mutableStateOf("") // New field for login number
+        private set
+
+    var pinReenterText by mutableStateOf("") // New field for login number
         private set
 
     fun onInsertColleagueClick() {
-        if(firstNameText.isBlank() || lastNameText.isBlank() || loginNumberText.isBlank()) {
+        if(firstNameText.isBlank() || lastNameText.isBlank() || pinText.isBlank()) {
             return
         }
         viewModelScope.launch {
-            colleagueDataSource.insertColleague(firstNameText, lastNameText, loginNumberText)
+            colleagueDataSource.insertColleague(firstNameText, lastNameText, pinText)
             firstNameText = ""
             lastNameText = ""
-            loginNumberText = ""
+            pinText = ""
+            pinReenterText = ""
         }
     }
 
@@ -62,6 +66,14 @@ class ColleagueListViewModel(
 
     fun onLastNameChange(value: String) {
         lastNameText = value
+    }
+
+    fun onPinChange(value: String) {
+        pinText = value
+    }
+
+    fun onPinReenterChange(value: String) {
+        pinReenterText = value
     }
 
     fun onColleagueDetailsDialogDismiss() {

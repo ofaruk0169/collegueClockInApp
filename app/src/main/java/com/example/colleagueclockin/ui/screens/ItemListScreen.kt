@@ -22,7 +22,10 @@ import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,6 +37,8 @@ import androidx.navigation.NavController
 import com.example.colleagueclockin.ui.navigation.Screen
 import databases.ColleagueEntity
 import org.koin.androidx.compose.koinViewModel
+import androidx.compose.runtime.collectAsState
+
 
 
 @Composable
@@ -41,6 +46,7 @@ fun ItemListScreen(
     navController: NavController,
     viewModel: ColleagueListViewModel = koinViewModel()
 ) {
+
 
     //collect data here from viewmodel
     val colleagues = viewModel.colleagues
@@ -88,28 +94,59 @@ fun ItemListScreen(
                 }
 
                 Button(onClick = {
-                    //action for first button
+                    viewModel.addStaff()
                 }) {
                     Text("Add Staff")
                 }
             }
         }
 
+
+
+
         //person detail dialog
-        viewModel.colleagueDetails?.let { details ->
-            Dialog(onDismissRequest = viewModel::onColleagueDetailsDialogDismiss) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(Color.White)
-                        .padding(16.dp),
-                    //contentAlignment = Alignment.Center
-                ) {
-                    Text(text = "${details.firstName} ${details.lastName}")
+
+
+        if (viewModel.showInputDialog.value) {
+            Dialog(
+                onDismissRequest = {
+                    viewModel.addStaffDismiss()
+                    // Perform any other cleanup or actions needed when the dialog is dismissed
+                },
+                content = {
+                    // Content of the dialog
+                    Column(
+                        modifier = Modifier
+                            .background(Color.White)
+                            .padding(16.dp)
+                    ) {
+                        Text("Add Staff")
+
+                        // Your input fields or other content here
+
+                        // Button to confirm adding staff
+                        Button(
+                            onClick = {
+                                // Add logic to handle adding staff here
+                                viewModel.addStaffDismiss()
+                            }
+                        ) {
+                            Text("Add")
+                        }
+
+                        // Button to manually dismiss the dialog
+                        Button(
+                            onClick = {
+                                viewModel.addStaffDismiss()
+                            }
+                        ) {
+                            Text("Dismiss")
+                        }
+                    }
                 }
-            }
+            )
         }
-        //emd of person detail dialog.
+        //end of person detail dialog.
 
     }
     

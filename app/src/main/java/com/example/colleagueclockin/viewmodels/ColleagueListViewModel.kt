@@ -1,5 +1,7 @@
 package com.example.colleagueclockin.viewmodels
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -14,7 +16,11 @@ class ColleagueListViewModel(
 ): ViewModel() {
 
 
+
     val colleagues = colleagueDataSource.getAllColleagues()
+
+    private var _showInputDialog: MutableState<Boolean> = mutableStateOf(false)
+    val showInputDialog: MutableState<Boolean> get() = _showInputDialog
 
     var colleagueDetails by mutableStateOf<ColleagueEntity?>(null)
         private set
@@ -58,5 +64,13 @@ class ColleagueListViewModel(
 
     fun onColleagueDetailsDialogDismiss() {
         colleagueDetails = null
+    }
+
+    //Staff Dialog Options
+    fun addStaff() {
+        _showInputDialog.value = true
+    }
+    fun addStaffDismiss() {
+        _showInputDialog.value = false
     }
 }

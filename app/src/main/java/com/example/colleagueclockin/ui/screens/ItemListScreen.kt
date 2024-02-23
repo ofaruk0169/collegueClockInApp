@@ -3,18 +3,22 @@
 package com.example.colleagueclockin.ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.material3.TextField
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import com.example.colleagueclockin.viewmodels.ColleagueListViewModel
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material3.Button
@@ -38,7 +42,7 @@ import com.example.colleagueclockin.ui.navigation.Screen
 import databases.ColleagueEntity
 import org.koin.androidx.compose.koinViewModel
 import androidx.compose.runtime.collectAsState
-
+import androidx.compose.ui.text.input.KeyboardType
 
 
 @Composable
@@ -122,26 +126,78 @@ fun ItemListScreen(
                     ) {
                         Text("Add Staff")
 
+                        Spacer(modifier = Modifier.height(16.dp))
+
                         // Your input fields or other content here
 
-                        // Button to confirm adding staff
-                        Button(
-                            onClick = {
-                                // Add logic to handle adding staff here
-                                viewModel.addStaffDismiss()
-                            }
+                        TextField(
+                            value = "",
+                            onValueChange = {},
+                            placeholder = { Text("Enter Staff First Name") },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp)
+                        )
+
+                        TextField(
+                            value = "",
+                            onValueChange = {},
+                            placeholder = { Text("Enter Staff Second Name") },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp)
+                        )
+
+                        TextField(
+                            value = "",
+                            onValueChange = {},
+                            placeholder = { Text("Enter Staff Pin") },
+                            keyboardOptions = KeyboardOptions.Default.copy(
+                                keyboardType = KeyboardType.Number
+                            ),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp)
+                        )
+
+                        TextField(
+                            value = "",
+                            onValueChange = {},
+                            placeholder = { Text("Re-enter Pin") },
+                            keyboardOptions = KeyboardOptions.Default.copy(
+                                keyboardType = KeyboardType.Number
+                            ),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp)
+                        )
+
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween
                         ) {
-                            Text("Add")
+                            // Button to confirm adding staff
+                            Button(
+                                onClick = {
+                                    // Add logic to handle adding staff here
+                                    viewModel.addStaffDismiss()
+                                }
+                            ) {
+                                Text("Add")
+                            }
+
+                            // Button to manually dismiss the dialog
+                            Button(
+                                onClick = {
+                                    viewModel.addStaffDismiss()
+                                }
+                            ) {
+                                Text("Dismiss")
+                            }
                         }
 
-                        // Button to manually dismiss the dialog
-                        Button(
-                            onClick = {
-                                viewModel.addStaffDismiss()
-                            }
-                        ) {
-                            Text("Dismiss")
-                        }
                     }
                 }
             )

@@ -76,6 +76,9 @@ fun ItemListScreen(
                 items(colleagues) { colleague ->
                     ColleagueItem (
                         colleague = colleague,
+                        onItemClick = {
+                                      viewModel.getColleagueById(colleague.id)
+                        },
                         onDeleteClick = {
                             viewModel.onDeleteClick(colleague.id)
                         },
@@ -204,6 +207,23 @@ fun ItemListScreen(
             )
         }
         //end of person detail dialog.
+
+        //Colleague's details
+        viewModel.colleagueDetails?.let { details ->
+            Dialog(onDismissRequest = viewModel::onColleagueDetailsDialogDismiss) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(Color.White)
+                        .padding(16.dp),
+                    //contentAlignment = Alignment.Center
+                ) {
+                    Text(text = "${details.firstName} ${details.lastName} ")
+                }
+            }
+        }
+
+        //End of colleague's details.
 
     }
     

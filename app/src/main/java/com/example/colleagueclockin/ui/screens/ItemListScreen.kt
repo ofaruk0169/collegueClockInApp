@@ -107,11 +107,7 @@ fun ItemListScreen(
             }
         }
 
-
-
-
         //person detail dialog
-
 
         if (viewModel.showInputDialog.value) {
             Dialog(
@@ -226,10 +222,6 @@ fun ItemListScreen(
         //End of colleague's details.
 
     }
-    
-    
-    
-    
 }
 
 @Composable
@@ -259,7 +251,7 @@ fun ColleagueItem (
 
         )
         Checkbox(
-            checked = true,
+            checked = colleague.clockInStatus == 1L,
             onCheckedChange = {  },
             modifier = Modifier.weight(1f)
         )

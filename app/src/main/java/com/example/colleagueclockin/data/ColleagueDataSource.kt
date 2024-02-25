@@ -11,6 +11,10 @@ interface ColleagueDataSource {
 
     suspend fun deleteColleagueById(id: Long)
 
-    suspend fun insertColleague(firstName: String, lastName: String, loginNumber: String,id: Long? = null)
-
+    suspend fun insertColleague(
+        firstName: String,
+        lastName: String,
+        loginNumber: String,
+        clockInStatus: Long? = 0,
+        id: Long? = null)
 }

@@ -3,15 +3,16 @@ CREATE TABLE colleagueEntity (
     id INTEGER NOT NULL PRIMARY KEY,
     firstName TEXT NOT NULL,
     lastName TEXT NOT NULL,
-    loginNumber TEXT NOT NULL
+    loginNumber TEXT NOT NULL,
+    clockInStatus INTEGER NOT NULL
 );
 
 -- Insert initial data
-INSERT INTO colleagueEntity (id, firstName, lastName, loginNumber) VALUES
-    (1, 'John', 'Doe', '12345'),
-    (2, 'Jane', 'Smith', '54321'),
-    (3, 'Bob', 'Johnson', '01694'),  -- Include 0 as a valid login_number
-    (4, 'Jon', 'Bobson', '55444');
+INSERT INTO colleagueEntity (id, firstName, lastName, loginNumber, clockInStatus) VALUES
+    (1, 'John', 'Doe', '12345', 0),
+    (2, 'Jane', 'Smith', '54321', 1),
+    (3, 'Bob', 'Johnson', '01694', 0),  -- Include 0 as a valid login_number
+    (4, 'Jon', 'Bobson', '55444', 1);
 
 -- Modify the getColleagueById query
 getColleagueById:
@@ -27,8 +28,8 @@ FROM colleagueEntity;
 -- Modify the insertColleague query
 insertColleague:
 INSERT OR REPLACE
-INTO colleagueEntity (id, firstName, lastName, loginNumber)
-VALUES (?, ?, ?, ?);
+INTO colleagueEntity (id, firstName, lastName, loginNumber, clockInStatus)
+VALUES (?, ?, ?, ?, ?);
 
 -- Modify the deleteColleagueById query
 deleteColleagueById:

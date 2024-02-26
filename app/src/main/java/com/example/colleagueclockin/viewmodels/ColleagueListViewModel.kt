@@ -15,6 +15,9 @@ class ColleagueListViewModel(
     private val colleagueDataSource: ColleagueDataSource
 ): ViewModel() {
 
+    var error by mutableStateOf<String?>(null)
+        private set
+
     val colleagues = colleagueDataSource.getAllColleagues()
 
     private var _showInputDialog: MutableState<Boolean> = mutableStateOf(false)

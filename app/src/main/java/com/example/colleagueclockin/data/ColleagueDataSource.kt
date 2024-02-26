@@ -1,5 +1,6 @@
 package com.example.colleagueclockin.data
 
+import com.example.colleagueclockin.util.Resource
 import databases.ColleagueEntity
 import kotlinx.coroutines.flow.Flow
 

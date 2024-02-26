@@ -87,6 +87,16 @@ fun ItemListScreen(
                 }
             }
 
+
+
+            if(viewModel.error != null) { 
+                Text(text = viewModel.error ?: "")
+            }
+
+
+
+
+
             Row(
                 modifier = Modifier
                     .fillMaxWidth()

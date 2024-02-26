@@ -17,5 +17,5 @@ interface ColleagueDataSource {
         lastName: String,
         loginNumber: String,
         clockInStatus: Long? = 0,
-        id: Long? = null)
+        id: Long? = null): Resource<Unit>
 }

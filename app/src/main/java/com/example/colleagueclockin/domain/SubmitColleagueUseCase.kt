@@ -4,18 +4,21 @@ import com.example.colleagueclockin.data.ColleagueDataSource
 import com.example.colleagueclockin.util.Resource
 
 
-
-/*
-
 class SubmitColleagueUseCase(
-    //You're supposed to do Dependecy Injection here somehow, figure out later
     private val colleagueDataSource: ColleagueDataSource
-) {
+){
 
-    fun execute(id: Long, firstName: String, lastName: String, pinText: String, pinReenterText: String, clockInStatus: Long): Resource<Unit> {
-        if(pinText !== pinReenterText) {
-            return Resource.Error("The Pins are not the same")
+    //the data we want to validate
+    suspend fun execute(firstNameText: String, lastNameText: String, pinText: String, pinReenterText: String): Resource<Unit> {
+        if(pinText.length !== 5) {
+            return Resource.Error("Pin Length must be 5 digits")
         }
-        return colleagueDataSource.insertColleague(id, firstName, lastName, pinText, clockInStatus)
+        if(pinText !==  pinReenterText) {
+            return Resource.Error("You need to enter the same pin twice")
+        }
+        return colleagueDataSource.insertColleague(firstNameText, lastNameText, pinText)
     }
-}*/
+
+}
+
+

@@ -8,11 +8,14 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.colleagueclockin.data.ColleagueDataSource
+import com.example.colleagueclockin.domain.SubmitColleagueUseCase
+import com.example.colleagueclockin.util.Resource
 import databases.ColleagueEntity
 import kotlinx.coroutines.launch
 
 class ColleagueListViewModel(
-    private val colleagueDataSource: ColleagueDataSource
+    private val colleagueDataSource: ColleagueDataSource,
+    private val submitColleagueUseCase: SubmitColleagueUseCase
 ): ViewModel() {
 
     var error by mutableStateOf<String?>(null)
@@ -43,7 +46,20 @@ class ColleagueListViewModel(
             return
         }
         viewModelScope.launch {
-            colleagueDataSource.insertColleague(firstNameText, lastNameText, pinText)
+
+            val result = submitColleagueUseCase.execute(firstNameText, lastNameText, pinText, pinReenterText)
+
+            when(result) {
+                is Resource.Success -> {
+
+                }
+                is Resource.Error -> {
+                    error = result.message
+                }
+            }
+
+
+            //colleagueDataSource.insertColleague(firstNameText, lastNameText, pinText)
             firstNameText = ""
             lastNameText = ""
             pinText = ""

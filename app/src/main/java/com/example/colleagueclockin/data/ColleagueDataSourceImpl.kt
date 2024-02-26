@@ -41,10 +41,25 @@ class ColleagueDataSourceImpl (
         loginNumber: String,
         clockInStatus: Long?,
         id: Long?
-    )
+    ): Resource<Unit>
     {
-        withContext(Dispatchers.IO) {
-            queries.insertColleague(id, firstName, lastName, loginNumber, clockInStatus ?: 0L)
+        return if(loginNumber.length == 5) {
+            withContext(Dispatchers.IO) {
+                queries.insertColleague(
+                    id,
+                    firstName,
+                    lastName,
+                    loginNumber,
+                    clockInStatus ?: 0L
+                )
+            }
+            Resource.Success(Unit)
+        } else {
+            if(Random.nextBoolean()) {
+                Resource.Error("Server error")
+            } else {
+                Resource.Error("Not authenticated error")
+            }
         }
 
     }

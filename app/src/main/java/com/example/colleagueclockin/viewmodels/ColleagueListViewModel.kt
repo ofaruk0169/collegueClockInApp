@@ -5,12 +5,17 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.colleagueclockin.data.ColleagueDataSource
 import com.example.colleagueclockin.domain.SubmitColleagueUseCase
 import com.example.colleagueclockin.util.Resource
 import databases.ColleagueEntity
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class ColleagueListViewModel(
@@ -18,8 +23,21 @@ class ColleagueListViewModel(
     private val submitColleagueUseCase: SubmitColleagueUseCase
 ): ViewModel() {
 
-    var error by mutableStateOf<String?>(null)
-        private set
+    //var error by mutableStateOf<String?>(null)
+       // private set
+
+
+
+    private val _error = MutableStateFlow<String?>(null)
+    val error: Flow<String?> = _error.asStateFlow()
+
+    fun clearError() {
+        _error.value = null
+    }
+
+    fun setError(errorMessage: String?) {
+        _error.value = errorMessage
+    }
 
     val colleagues = colleagueDataSource.getAllColleagues()
 
@@ -49,12 +67,14 @@ class ColleagueListViewModel(
 
             val result = submitColleagueUseCase.execute(firstNameText, lastNameText, pinText, pinReenterText)
 
-            when(result) {
+            when (result) {
                 is Resource.Success -> {
-
+                    // Clear the error on success
+                    clearError()
                 }
                 is Resource.Error -> {
-                    error = result.message
+                    // Set the error message on failure
+                    setError(result.message)
                 }
             }
 

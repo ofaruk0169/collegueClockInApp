@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.runtime.Composable
 import com.example.colleagueclockin.viewmodels.ColleagueListViewModel
 import androidx.compose.foundation.lazy.LazyColumn
@@ -25,8 +26,11 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Snackbar
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -46,6 +50,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import kotlinx.coroutines.delay
 
 
 @Composable
@@ -87,16 +92,6 @@ fun ItemListScreen(
                 }
             }
 
-
-
-            if(viewModel.error != null) { 
-                Text(text = viewModel.error ?: "")
-            }
-
-
-
-
-
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -133,6 +128,9 @@ fun ItemListScreen(
                             .padding(16.dp)
                     ) {
                         Text("Add Staff")
+
+
+                        UserAddError(viewModel = viewModel)
 
                         Spacer(modifier = Modifier.height(16.dp))
 
@@ -271,6 +269,24 @@ fun ColleagueItem (
                 contentDescription = "Delete person",
                 tint = Color.Gray
             )
+        }
+    }
+}
+
+@Composable
+fun UserAddError(viewModel: ColleagueListViewModel) {
+    val error = viewModel.error.collectAsState(initial = null).value
+
+    if (error != null) {
+        Text(
+            text = error,
+            color = Color.Red
+        )
+
+        // Launch coroutine to clear error after 1 minute
+        LaunchedEffect(Unit) {
+            delay(5000)
+            viewModel.clearError()
         }
     }
 }

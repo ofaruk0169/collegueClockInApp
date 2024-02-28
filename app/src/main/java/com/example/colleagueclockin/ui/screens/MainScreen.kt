@@ -25,11 +25,16 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.colleagueclockin.ui.navigation.Screen
+import com.example.colleagueclockin.viewmodels.ColleagueListViewModel
+import com.example.colleagueclockin.viewmodels.MainScreenViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun MainAppContent(navController: NavController) {
+fun MainAppContent(
+    navController: NavController,
+    viewModel: MainScreenViewModel = koinViewModel()
+) {
 
-    //val viewModel: CollegueListViewModel = viewModel()
     var password by remember { mutableStateOf("") }
 
     Column(

@@ -283,7 +283,7 @@ fun UserAddError(viewModel: ColleagueListViewModel) {
             color = Color.Red
         )
 
-        // Launch coroutine to clear error after 1 minute
+        // Launch coroutine to clear error after 5 seconds
         LaunchedEffect(Unit) {
             delay(5000)
             viewModel.clearError()

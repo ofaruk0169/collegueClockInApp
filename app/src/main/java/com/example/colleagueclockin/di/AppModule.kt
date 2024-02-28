@@ -8,6 +8,7 @@ import com.example.colleagueclockin.data.ColleagueDataSource
 import com.example.colleagueclockin.data.ColleagueDataSourceImpl
 import com.example.colleagueclockin.domain.SubmitColleagueUseCase
 import com.example.colleagueclockin.viewmodels.ColleagueListViewModel
+import com.example.colleagueclockin.viewmodels.MainScreenViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -19,6 +20,7 @@ val appModule = module {
 
     // Declare ColleagueListViewModel with ViewModel DSL
     viewModel { ColleagueListViewModel(get(), get()) }
+    viewModel { MainScreenViewModel(get()) }
 
     single { provideSqlDriver(androidContext()) }
     single { provideColleagueDataSource(get()) }

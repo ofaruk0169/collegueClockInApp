@@ -63,4 +63,29 @@ class ColleagueDataSourceImpl (
         }
 
     }
+
+
+    override suspend fun toggleClockInStatus(
+        id: Long,
+        firstName: String,
+        lastName: String,
+        loginNumber: String,
+        clockInStatus: Long
+    ): Resource<Unit> {
+        return try {
+            queries.insertColleague(
+                firstName = firstName,
+                lastName = lastName,
+                loginNumber = loginNumber,
+                clockInStatus = clockInStatus,
+                id = id
+            )
+            Resource.Success(Unit)
+        } catch (e: Exception) {
+            Resource.Error("Failed to update colleague: ${e.message}")
+        }
+    }
+
+
+
 }

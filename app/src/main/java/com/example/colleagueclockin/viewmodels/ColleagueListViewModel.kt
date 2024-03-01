@@ -23,11 +23,6 @@ class ColleagueListViewModel(
     private val submitColleagueUseCase: SubmitColleagueUseCase
 ): ViewModel() {
 
-    //var error by mutableStateOf<String?>(null)
-       // private set
-
-
-
     private val _error = MutableStateFlow<String?>(null)
     val error: Flow<String?> = _error.asStateFlow()
 

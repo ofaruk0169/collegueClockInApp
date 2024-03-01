@@ -13,6 +13,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -36,6 +37,10 @@ fun MainAppContent(
 ) {
 
     var password by remember { mutableStateOf("") }
+
+    val colleagues = viewModel.colleagues
+        .collectAsState(initial = emptyList())
+        .value
 
     Column(
         modifier = Modifier
@@ -91,7 +96,7 @@ fun MainAppContent(
         //submit button
         Button(
             onClick = {
-                // Handle button 1 click
+                viewModel.toggleClockInStatus(password)
             },
             modifier = Modifier
                 .height(66.dp)

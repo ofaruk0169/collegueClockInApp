@@ -3,6 +3,7 @@ package com.example.colleagueclockin.data
 import com.example.colleagueclockin.util.Resource
 import databases.ColleagueEntity
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.firstOrNull
 
 interface ColleagueDataSource {
 
@@ -19,6 +20,11 @@ interface ColleagueDataSource {
         clockInStatus: Long? = 0,
         id: Long? = null): Resource<Unit>
 
-
-
+    suspend fun toggleClockInStatus(
+        id: Long,
+        firstName: String,
+        lastName: String,
+        loginNumber: String,
+        clockInStatus: Long
+    ): Resource<Unit>
 }

@@ -6,6 +6,7 @@ import app.cash.sqldelight.driver.android.AndroidSqliteDriver
 import com.example.colleagueclockin.ColleagueClockInDatabase
 import com.example.colleagueclockin.data.ColleagueDataSource
 import com.example.colleagueclockin.data.ColleagueDataSourceImpl
+import com.example.colleagueclockin.domain.ClockInChecker
 import com.example.colleagueclockin.domain.SubmitColleagueUseCase
 import com.example.colleagueclockin.viewmodels.ColleagueListViewModel
 import com.example.colleagueclockin.viewmodels.MainScreenViewModel
@@ -20,13 +21,14 @@ val appModule = module {
 
     // Declare ColleagueListViewModel with ViewModel DSL
     viewModel { ColleagueListViewModel(get(), get()) }
-    viewModel { MainScreenViewModel(get()) }
+    viewModel { MainScreenViewModel(get(), get()) }
 
     single { provideSqlDriver(androidContext()) }
     single { provideColleagueDataSource(get()) }
 
     // Declare SubmitColleagueUseCase singleton
     single { SubmitColleagueUseCase(get()) }
+    single { ClockInChecker(get()) }
 }
 
 

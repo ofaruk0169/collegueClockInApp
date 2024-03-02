@@ -7,6 +7,8 @@ import kotlinx.coroutines.flow.firstOrNull
 
 interface ColleagueDataSource {
 
+    suspend fun getColleagueByLoginNumber(loginNumber: String): ColleagueEntity?
+
     suspend fun getColleagueById(id: Long): ColleagueEntity?
 
     fun getAllColleagues(): Flow<List<ColleagueEntity>>
@@ -19,6 +21,7 @@ interface ColleagueDataSource {
         loginNumber: String,
         clockInStatus: Long? = 0,
         id: Long? = null): Resource<Unit>
+
 
     suspend fun toggleClockInStatus(
         id: Long,

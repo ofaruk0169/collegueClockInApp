@@ -20,6 +20,12 @@ SELECT *
 FROM colleagueEntity
 WHERE id = :id;
 
+-- Query to retrieve a colleague by login number
+getColleagueByLoginNumber:
+SELECT *
+FROM colleagueEntity
+WHERE loginNumber = :loginNumber;
+
 -- Modify the getAllColleagues query
 getAllColleagues:
 SELECT *

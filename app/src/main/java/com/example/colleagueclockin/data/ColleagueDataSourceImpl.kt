@@ -23,6 +23,14 @@ class ColleagueDataSourceImpl (
         }
     }
 
+    override suspend fun getColleagueByLoginNumber(loginNumber: String): ColleagueEntity? {
+        return withContext(Dispatchers.IO) {
+            // Implement the logic to get a colleague by login number
+            // For example, you might use a query from your database
+            queries.getColleagueByLoginNumber(loginNumber).executeAsOneOrNull()
+        }
+    }
+
 
     override fun getAllColleagues(): Flow<List<ColleagueEntity>> {
         return queries.getAllColleagues().asFlow().mapToList(Dispatchers.IO)

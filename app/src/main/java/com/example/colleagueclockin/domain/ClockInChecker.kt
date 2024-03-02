@@ -14,7 +14,23 @@ class ClockInChecker(
         clockInString: String
     ): Resource<Unit> {
 
+        // Use SQLDelight query to get a colleague by loginNumber
+        val matchingColleague = colleagueDataSource.getColleagueByLoginNumber(clockInString)
 
+        return if (matchingColleague != null) {
+            // Matching colleague found, extract details
+            val firstName = matchingColleague.firstName
+            val secondName = matchingColleague.lastName
+            val clockInStatus = matchingColleague.clockInStatus
+
+            // Perform clock-in logic or any other operations with the extracted details
+            // ...
+
+            Resource.Success(Unit)
+        } else {
+            // No matching colleague found, handle accordingly
+            Resource.Error("Colleague not found with the provided loginNumber")
+        }
     }
 
 

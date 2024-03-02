@@ -39,14 +39,13 @@ class MainScreenViewModel(
                 is Resource.Success -> {
                     // Clear the error on success
                     clearError()
+                    //message = "you're good to go"
                 }
                 is Resource.Error -> {
                     // Set the error message on failure
                     setError(signInResult.message)
                 }
             }
-
-
         }
     }
 }

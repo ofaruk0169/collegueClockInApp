@@ -97,6 +97,7 @@ fun MainAppContent(
         Button(
             onClick = {
                 viewModel.toggleClockInStatus(password)
+                password = ""
             },
             modifier = Modifier
                 .height(66.dp)

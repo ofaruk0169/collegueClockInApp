@@ -73,7 +73,6 @@ class ColleagueListViewModel(
                 }
             }
 
-
             //colleagueDataSource.insertColleague(firstNameText, lastNameText, pinText)
             firstNameText = ""
             lastNameText = ""

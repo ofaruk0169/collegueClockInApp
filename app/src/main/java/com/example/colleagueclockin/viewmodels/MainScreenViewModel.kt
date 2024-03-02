@@ -6,6 +6,9 @@ import com.example.colleagueclockin.data.ColleagueDataSource
 import com.example.colleagueclockin.domain.ClockInChecker
 import com.example.colleagueclockin.domain.SubmitColleagueUseCase
 import com.example.colleagueclockin.util.Resource
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 
@@ -15,14 +18,33 @@ class MainScreenViewModel(
 
 ): ViewModel() {
 
+    private val _signInError = MutableStateFlow<String?>(null)
+    val signInError: Flow<String?> = _signInError.asStateFlow()
+
+    fun clearError() {
+        _signInError.value = null
+    }
+
+    fun setError(errorMessage: String?) {
+        _signInError.value = errorMessage
+    }
+
     val colleagues = colleagueDataSource.getAllColleagues()
 
     fun toggleClockInStatus(password: String) {
 
         viewModelScope.launch {
 
-            val result = clockInChecker.checkClockIn(password)
-
+            when (val signInResult = clockInChecker.checkClockIn(password)) {
+                is Resource.Success -> {
+                    // Clear the error on success
+                    clearError()
+                }
+                is Resource.Error -> {
+                    // Set the error message on failure
+                    setError(signInResult.message)
+                }
+            }
 
 
         }

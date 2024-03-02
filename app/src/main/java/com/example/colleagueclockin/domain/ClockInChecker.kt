@@ -19,23 +19,29 @@ class ClockInChecker(
 
         return if (matchingColleague != null) {
             // Matching colleague found, extract details
+            val colleagueId = matchingColleague.id
             val firstName = matchingColleague.firstName
             val secondName = matchingColleague.lastName
-            val clockInStatus = matchingColleague.clockInStatus
+            val clockInString = clockInString
+            var clockInStatus = matchingColleague.clockInStatus
 
             // Perform clock-in logic or any other operations with the extracted details
             // ...
 
+            clockInStatus = if (clockInStatus == 1L) 0L else 1L
+            val updatedColleague = matchingColleague.copy(clockInStatus = clockInStatus)
+
+            // Use the updatedColleague for further operations or persistence
+            // ...
+
             Resource.Success(Unit)
+            return colleagueDataSource.toggleClockInStatus(colleagueId,firstName, secondName, clockInString, clockInStatus)
         } else {
             // No matching colleague found, handle accordingly
             Resource.Error("Colleague not found with the provided loginNumber")
         }
     }
-
-
 }
 
 
 
-//return colleagueDataSource.insertColleague(firstNameText, lastNameText, pinText)

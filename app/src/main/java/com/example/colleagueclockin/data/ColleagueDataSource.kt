@@ -3,7 +3,6 @@ package com.example.colleagueclockin.data
 import com.example.colleagueclockin.util.Resource
 import databases.ColleagueEntity
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.firstOrNull
 
 interface ColleagueDataSource {
 
@@ -19,7 +18,7 @@ interface ColleagueDataSource {
         firstName: String,
         lastName: String,
         loginNumber: String,
-        clockInStatus: Long? = 0,
+        clockInStatus: Long = 0,
         id: Long? = null): Resource<Unit>
 
 

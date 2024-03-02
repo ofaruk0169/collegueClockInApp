@@ -47,7 +47,7 @@ class ColleagueDataSourceImpl (
         firstName: String,
         lastName: String,
         loginNumber: String,
-        clockInStatus: Long?,
+        clockInStatus: Long,
         id: Long?
     ): Resource<Unit>
     {

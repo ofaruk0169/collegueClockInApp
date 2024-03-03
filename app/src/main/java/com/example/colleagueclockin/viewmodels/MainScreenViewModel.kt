@@ -21,13 +21,28 @@ class MainScreenViewModel(
     private val _signInError = MutableStateFlow<String?>(null)
     val signInError: Flow<String?> = _signInError.asStateFlow()
 
-    fun clearError() {
+    private val _success = MutableStateFlow<String?>(null)
+    val success: Flow<String?> = _success.asStateFlow()
+
+    //for when user signs in successfully
+    fun clearSuccess() {
+        _success.value = null
+    }
+    fun setSuccess(successMessage: String?) {
+        _success.value = successMessage
+    }
+    //
+
+    //for when user fails to sign in
+    fun clearSignInError() {
         _signInError.value = null
     }
 
-    fun setError(errorMessage: String?) {
+    fun setSignInError(errorMessage: String?) {
         _signInError.value = errorMessage
     }
+
+    //
 
     val colleagues = colleagueDataSource.getAllColleagues()
 
@@ -38,12 +53,11 @@ class MainScreenViewModel(
             when (val signInResult = clockInChecker.checkClockIn(password)) {
                 is Resource.Success -> {
                     // Clear the error on success
-                    clearError()
-                    //message = "you're good to go"
+                    setSuccess("You're good to go!")
                 }
                 is Resource.Error -> {
                     // Set the error message on failure
-                    setError(signInResult.message)
+                    setSignInError(signInResult.message)
                 }
             }
         }

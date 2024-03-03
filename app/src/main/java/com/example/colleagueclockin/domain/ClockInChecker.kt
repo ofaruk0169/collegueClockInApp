@@ -33,7 +33,7 @@ class ClockInChecker(
             return Resource.Success(Unit)
         } else {
             // No matching colleague found, handle accordingly
-            return Resource.Error("Colleague not found with the provided loginNumber")
+            return Resource.Error("Colleague not found with the provided login number")
         }
     }
 }

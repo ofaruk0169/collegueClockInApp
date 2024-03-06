@@ -14,6 +14,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -63,13 +64,18 @@ fun MainAppContent(
             TopAppBar(title = { Text(text = "Colleague Clock-in Application")} )
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = { /*TODO*/ }) {
-                Icon(imageVector = Icons.Default.Add, contentDescription = "Staff")
+            FloatingActionButton(onClick = {
+                navController.navigate(Screen.ItemListScreen.route)
+            }) {
+                Icon(imageVector = Icons.Default.Person, contentDescription = "Staff")
             }
         },
         bottomBar = {
             BottomAppBar {
-                Text(text = "An Omare Faruk Application")
+                Text(
+                    text = "An Omare Faruk Application",
+                    modifier = Modifier.padding(start = 16.dp)
+                )
             }
         }
     ) { paddingValues ->

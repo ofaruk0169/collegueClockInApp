@@ -24,6 +24,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Send
 import androidx.compose.material.icons.outlined.Delete
@@ -130,7 +131,7 @@ fun ItemListScreen(
                     modifier = Modifier
                         .padding(16.dp)
                 ) {
-                    Icon(imageVector = Icons.Default.Person, contentDescription = "Add Staff")
+                    Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Add Staff")
                 }
 
                 FloatingActionButton(

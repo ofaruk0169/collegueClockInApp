@@ -16,7 +16,7 @@ class MainScreenViewModel(
     private val colleagueDataSource: ColleagueDataSource,
     private val clockInChecker: ClockInChecker
 
-): ViewModel() {
+) : ViewModel() {
 
     private val _signInError = MutableStateFlow<String?>(null)
     val signInError: Flow<String?> = _signInError.asStateFlow()
@@ -28,6 +28,7 @@ class MainScreenViewModel(
     fun clearSuccess() {
         _success.value = null
     }
+
     fun setSuccess(successMessage: String?) {
         _success.value = successMessage
     }
@@ -42,8 +43,6 @@ class MainScreenViewModel(
         _signInError.value = errorMessage
     }
 
-    //
-
     val colleagues = colleagueDataSource.getAllColleagues()
 
     fun toggleClockInStatus(password: String) {
@@ -55,6 +54,7 @@ class MainScreenViewModel(
                     // Clear the error on success
                     setSuccess("You're good to go!")
                 }
+
                 is Resource.Error -> {
                     // Set the error message on failure
                     setSignInError(signInResult.message)

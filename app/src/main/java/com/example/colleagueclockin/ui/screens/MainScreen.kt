@@ -4,12 +4,14 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -54,7 +56,6 @@ fun MainAppContent(
     navController: NavController,
     viewModel: MainScreenViewModel = koinViewModel()
 ) {
-    var text by remember { mutableStateOf("Hello, Scaffold!") }
     var password by remember { mutableStateOf("") }
 
     val colleagues = viewModel.colleagues
@@ -89,106 +90,48 @@ fun MainAppContent(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
+            UserAddSignInSuccess(viewModel = viewModel)
+            UserAddSignInError(viewModel = viewModel)
 
-            TextField(
-                value = password,
-                onValueChange = {
-                    password = it
-                },
-                label = { Text("Sign In Code") },
-                visualTransformation = PasswordVisualTransformation(),
-                keyboardOptions = KeyboardOptions.Default.copy(
-                    keyboardType = KeyboardType.Number,
-                    imeAction = ImeAction.Done
-                ),
+            Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 16.dp),
-            )
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                TextField(
+                    value = password,
+                    onValueChange = {
+                        password = it
+                    },
+                    label = { Text("Sign In Code") },
+                    visualTransformation = PasswordVisualTransformation(),
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        keyboardType = KeyboardType.Number,
+                        imeAction = ImeAction.Done
+                    ),
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(IntrinsicSize.Min)
+                )
 
+                Spacer(modifier = Modifier.width(16.dp)) // Add some spacing between TextField and Button
 
-
-            Button(onClick = { /*TODO*/ }) {
-                Icon(imageVector = Icons.Default.Send, contentDescription = "Staff")
+                Button(
+                    onClick = {
+                        viewModel.toggleClockInStatus(password)
+                        password = ""
+                    },
+                    modifier = Modifier
+                        .height(IntrinsicSize.Min)
+                ) {
+                    Icon(imageVector = Icons.Default.Send, contentDescription = "Staff")
+                }
             }
-
-
-
-
-
         }
     }
-
-
 }
-
-
-
-/*    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = "Colleague Clock-in Application"
-        )
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Button(
-                onClick = {
-                    // navigate to ItemListScreen when clicked.
-                    navController.navigate(Screen.ItemListScreen.route)
-                },
-                modifier = Modifier
-                    .weight(1f)
-                    .padding(end = 8.dp)
-            ) {
-                Text(text = "Staff Status")
-            }
-        }
-
-        UserAddSignInSuccess(viewModel = viewModel)
-
-        UserAddSignInError(viewModel = viewModel)
-
-
-        //Password input
-        TextField(
-            value = password,
-            onValueChange = {
-                password = it
-            },
-            label = { Text("Sign In Code") },
-            visualTransformation = PasswordVisualTransformation(),
-            keyboardOptions = KeyboardOptions.Default.copy(
-                keyboardType = KeyboardType.Number,
-                imeAction = ImeAction.Done
-            ),
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 16.dp),
-        )
-
-        //submit button
-        Button(
-            onClick = {
-                viewModel.toggleClockInStatus(password)
-                password = ""
-            },
-            modifier = Modifier
-                .height(66.dp)
-                .padding(10.dp)
-        ) {
-            Text(text = "Enter")
-        }
-    }*/
 
 
 @Composable

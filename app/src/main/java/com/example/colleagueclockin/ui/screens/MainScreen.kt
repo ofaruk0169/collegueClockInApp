@@ -64,14 +64,12 @@ fun MainAppContent(
         },
         floatingActionButton = {
             FloatingActionButton(onClick = { /*TODO*/ }) {
-                Icon(imageVector = Icons.Default.Add, contentDescription = "")
+                Icon(imageVector = Icons.Default.Add, contentDescription = "Staff")
             }
         },
         bottomBar = {
             BottomAppBar {
-                Text(text = "Home")
-                Text(text = "Settings")
-                Text(text = "Search")
+                Text(text = "An Omare Faruk Application")
             }
         }
     ) { paddingValues ->

@@ -58,10 +58,6 @@ fun MainAppContent(
             text = "Colleague Clock-in Application"
         )
 
-        //Spacer(modifier = Modifier.height(46.dp))
-
-        //Button layout
-
         Row(
             modifier = Modifier
                 .fillMaxWidth()

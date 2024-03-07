@@ -1,4 +1,4 @@
-package com.example.colleagueclockin.domain
+package com.example.colleagueclockin.domain.use_case
 
 import com.example.colleagueclockin.data.ColleagueDataSource
 import com.example.colleagueclockin.util.Resource

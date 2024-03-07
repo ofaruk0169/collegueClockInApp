@@ -1,16 +1,13 @@
 package com.example.colleagueclockin.viewmodels
 
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.colleagueclockin.data.ColleagueDataSource
-import com.example.colleagueclockin.domain.SubmitColleagueUseCase
+import com.example.colleagueclockin.domain.use_case.SubmitColleagueUseCase
 import com.example.colleagueclockin.util.Resource
 import databases.ColleagueEntity
 import kotlinx.coroutines.flow.Flow

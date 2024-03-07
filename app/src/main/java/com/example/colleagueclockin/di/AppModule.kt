@@ -6,8 +6,8 @@ import app.cash.sqldelight.driver.android.AndroidSqliteDriver
 import com.example.colleagueclockin.ColleagueClockInDatabase
 import com.example.colleagueclockin.data.ColleagueDataSource
 import com.example.colleagueclockin.data.ColleagueDataSourceImpl
-import com.example.colleagueclockin.domain.ClockInChecker
-import com.example.colleagueclockin.domain.SubmitColleagueUseCase
+import com.example.colleagueclockin.domain.use_case.ClockInChecker
+import com.example.colleagueclockin.domain.use_case.SubmitColleagueUseCase
 import com.example.colleagueclockin.viewmodels.ColleagueListViewModel
 import com.example.colleagueclockin.viewmodels.MainScreenViewModel
 import org.koin.android.ext.koin.androidContext

@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.colleagueclockin.data.ColleagueDataSource
 import com.example.colleagueclockin.domain.use_case.ClockInChecker
-import com.example.colleagueclockin.util.Resource
+import com.example.colleagueclockin.common.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

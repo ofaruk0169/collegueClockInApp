@@ -1,4 +1,4 @@
-package com.example.colleagueclockin.ui.theme
+package com.example.colleagueclockin.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

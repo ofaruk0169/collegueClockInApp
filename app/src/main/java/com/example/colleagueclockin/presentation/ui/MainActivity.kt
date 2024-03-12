@@ -1,4 +1,4 @@
-package com.example.colleagueclockin.ui
+package com.example.colleagueclockin.presentation.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -6,8 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.NavController
-import com.example.colleagueclockin.ui.navigation.Navigation
-import com.example.colleagueclockin.ui.navigation.Screen
+import com.example.colleagueclockin.presentation.ui.navigation.Navigation
+import com.example.colleagueclockin.presentation.ui.navigation.Screen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

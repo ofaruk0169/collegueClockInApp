@@ -1,4 +1,4 @@
-package com.example.colleagueclockin.ui.navigation
+package com.example.colleagueclockin.presentation.ui.navigation
 
 import androidx.compose.runtime.Composable
 
@@ -6,8 +6,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.colleagueclockin.ui.screens.ItemListScreen
-import com.example.colleagueclockin.ui.screens.MainAppContent
+import com.example.colleagueclockin.presentation.ui.screens.ItemListScreen
+import com.example.colleagueclockin.presentation.ui.screens.MainAppContent
 
 
 @Composable

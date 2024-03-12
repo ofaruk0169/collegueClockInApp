@@ -1,6 +1,6 @@
 
 
-package com.example.colleagueclockin.ui.screens
+package com.example.colleagueclockin.presentation.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.material3.TextField
@@ -54,7 +54,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavController
-import com.example.colleagueclockin.ui.navigation.Screen
+import com.example.colleagueclockin.presentation.ui.navigation.Screen
 import databases.ColleagueEntity
 import org.koin.androidx.compose.koinViewModel
 import androidx.compose.runtime.collectAsState

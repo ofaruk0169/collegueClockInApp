@@ -1,4 +1,4 @@
-package com.example.colleagueclockin.ui.theme
+package com.example.colleagueclockin.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build

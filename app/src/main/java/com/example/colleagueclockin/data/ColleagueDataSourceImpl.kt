@@ -3,7 +3,7 @@ package com.example.colleagueclockin.data
 import app.cash.sqldelight.coroutines.asFlow
 import app.cash.sqldelight.coroutines.mapToList
 import com.example.colleagueclockin.ColleagueClockInDatabase
-import com.example.colleagueclockin.util.Resource
+import com.example.colleagueclockin.common.Resource
 import databases.ColleagueEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

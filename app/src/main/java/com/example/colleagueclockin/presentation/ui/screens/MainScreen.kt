@@ -1,4 +1,4 @@
-package com.example.colleagueclockin.ui.screens
+package com.example.colleagueclockin.presentation.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -44,7 +44,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.colleagueclockin.ui.navigation.Screen
+import com.example.colleagueclockin.presentation.ui.navigation.Screen
 import com.example.colleagueclockin.viewmodels.ColleagueListViewModel
 import com.example.colleagueclockin.viewmodels.MainScreenViewModel
 import kotlinx.coroutines.delay

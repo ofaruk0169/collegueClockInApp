@@ -1,6 +1,6 @@
 package com.example.colleagueclockin.domain.use_case
 
-import com.example.colleagueclockin.data.ColleagueDataSource
+import com.example.colleagueclockin.domain.repository.ColleagueDataSource
 import com.example.colleagueclockin.common.Resource
 
 class ClockInChecker(

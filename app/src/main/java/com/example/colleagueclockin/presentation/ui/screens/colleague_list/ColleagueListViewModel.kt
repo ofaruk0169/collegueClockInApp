@@ -6,7 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.colleagueclockin.data.ColleagueDataSource
+import com.example.colleagueclockin.domain.repository.ColleagueDataSource
 import com.example.colleagueclockin.domain.use_case.SubmitColleagueUseCase
 import com.example.colleagueclockin.common.Resource
 import databases.ColleagueEntity

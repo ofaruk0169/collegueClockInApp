@@ -1,4 +1,4 @@
-package com.example.colleagueclockin.data
+package com.example.colleagueclockin.domain.repository
 
 import com.example.colleagueclockin.common.Resource
 import databases.ColleagueEntity

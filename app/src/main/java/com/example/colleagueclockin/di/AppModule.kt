@@ -4,7 +4,7 @@ import android.content.Context
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.android.AndroidSqliteDriver
 import com.example.colleagueclockin.ColleagueClockInDatabase
-import com.example.colleagueclockin.data.ColleagueDataSource
+import com.example.colleagueclockin.domain.repository.ColleagueDataSource
 import com.example.colleagueclockin.data.ColleagueDataSourceImpl
 import com.example.colleagueclockin.domain.use_case.ClockInChecker
 import com.example.colleagueclockin.domain.use_case.SubmitColleagueUseCase

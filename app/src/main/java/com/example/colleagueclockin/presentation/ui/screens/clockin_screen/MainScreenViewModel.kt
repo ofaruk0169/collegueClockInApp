@@ -2,7 +2,7 @@ package com.example.colleagueclockin.presentation.ui.screens.clockin_screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.colleagueclockin.data.ColleagueDataSource
+import com.example.colleagueclockin.domain.repository.ColleagueDataSource
 import com.example.colleagueclockin.domain.use_case.ClockInChecker
 import com.example.colleagueclockin.common.Resource
 import kotlinx.coroutines.flow.Flow

@@ -1,4 +1,4 @@
-package com.example.colleagueclockin.viewmodels
+package com.example.colleagueclockin.presentation.ui.screens.colleague_list
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue

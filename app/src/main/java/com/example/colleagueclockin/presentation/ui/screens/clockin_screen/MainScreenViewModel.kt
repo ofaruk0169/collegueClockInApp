@@ -1,4 +1,4 @@
-package com.example.colleagueclockin.viewmodels
+package com.example.colleagueclockin.presentation.ui.screens.clockin_screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

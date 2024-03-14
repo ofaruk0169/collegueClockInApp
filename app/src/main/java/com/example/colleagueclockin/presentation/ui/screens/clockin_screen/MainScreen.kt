@@ -1,4 +1,4 @@
-package com.example.colleagueclockin.presentation.ui.screens
+package com.example.colleagueclockin.presentation.ui.screens.clockin_screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -14,9 +14,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Send
 import androidx.compose.material3.BottomAppBar
@@ -38,15 +35,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.colleagueclockin.presentation.ui.navigation.Screen
-import com.example.colleagueclockin.viewmodels.ColleagueListViewModel
-import com.example.colleagueclockin.viewmodels.MainScreenViewModel
 import kotlinx.coroutines.delay
 import org.koin.androidx.compose.koinViewModel
 

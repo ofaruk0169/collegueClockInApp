@@ -8,8 +8,8 @@ import com.example.colleagueclockin.data.ColleagueDataSource
 import com.example.colleagueclockin.data.ColleagueDataSourceImpl
 import com.example.colleagueclockin.domain.use_case.ClockInChecker
 import com.example.colleagueclockin.domain.use_case.SubmitColleagueUseCase
-import com.example.colleagueclockin.viewmodels.ColleagueListViewModel
-import com.example.colleagueclockin.viewmodels.MainScreenViewModel
+import com.example.colleagueclockin.presentation.ui.screens.colleague_list.ColleagueListViewModel
+import com.example.colleagueclockin.presentation.ui.screens.clockin_screen.MainScreenViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module

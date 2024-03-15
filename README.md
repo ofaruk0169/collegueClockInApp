@@ -22,4 +22,4 @@ If you are interested in installing this application onto your local computer fo
 5. Set up the emulator, if you haven't set up an emulator yet, you can do so by going to "Tools" > "AVD Manager" in Android Studio. Create a new virtual device according to your preferences and specifications.
 6. Once the project is successfully imported and synced, you can run the application by clicking the "Run" button in the toolbar. Choose the emulator you created in the previous step, and Android Studio will build the app and install it on the emulator. After installation, the app should automatically start running on the emulator.
 
-Now you can explore the collegueClockInApp app running in the emulator. You can interact with it as you would with any other Android app, testing its features and functionality.
+Now you can explore the Collegue Clock In App running in the emulator. You can interact with it as you would with any other Android app, testing its features and functionality.

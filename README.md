@@ -11,3 +11,15 @@ Below is a brief demonstration video on my YouTube channel, providing an overvie
 
 [![collegueClockInApp](https://img.youtube.com/vi/L9_DNSihm3U/0.jpg)](https://www.youtube.com/shorts/L9_DNSihm3U)
 
+## Installation Guide
+
+If you are interested in installing this application onto your local computer for a personalised demo, follow these instructions. 
+
+1. Clone the repository using the following command on your terminal - `git clone https://github.com/ofaruk0169/collegueClockInApp.git`
+2. Open Android Studio on your computer
+3. In Android Studio select "File" > "Open" and navigate to the directory where you cloned the repository. Select the "collegueClockInApp" directory and click "OK" to import the project into Android Studio.
+4. Once the project is imported, Android Studio may automatically start syncing the project with Gradle. If not, you can manually trigger the sync process by clicking on the "Sync Project with Gradle Files" icon in the toolbar.
+5. Set up the emulator, if you haven't set up an emulator yet, you can do so by going to "Tools" > "AVD Manager" in Android Studio. Create a new virtual device according to your preferences and specifications.
+6. Once the project is successfully imported and synced, you can run the application by clicking the "Run" button in the toolbar. Choose the emulator you created in the previous step, and Android Studio will build the app and install it on the emulator. After installation, the app should automatically start running on the emulator.
+
+Now you can explore the collegueClockInApp app running in the emulator. You can interact with it as you would with any other Android app, testing its features and functionality.

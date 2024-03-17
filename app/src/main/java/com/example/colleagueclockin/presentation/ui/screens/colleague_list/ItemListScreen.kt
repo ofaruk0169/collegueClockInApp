@@ -69,7 +69,7 @@ fun ItemListScreen(
         bottomBar = {
             BottomAppBar {
                 Text(
-                    text = "An Omare Faruk Application",
+                    text = "An Omare Faruk Application 2024",
                     modifier = Modifier.padding(start = 16.dp)
                 )
             }

@@ -30,7 +30,6 @@ class MainScreenViewModel(
     fun setSuccess(successMessage: String?) {
         _success.value = successMessage
     }
-    //
 
     //for when user fails to sign in
     fun clearSignInError() {
@@ -48,6 +47,7 @@ class MainScreenViewModel(
         viewModelScope.launch {
 
             when (val signInResult = clockInChecker.checkClockIn(password)) {
+
                 is Resource.Success -> {
                     // Clear the error on success
                     setSuccess("You're good to go!")

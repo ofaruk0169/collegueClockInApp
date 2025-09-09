@@ -13,7 +13,6 @@ import kotlinx.coroutines.launch
 class MainScreenViewModel(
     private val colleagueDataSource: ColleagueDataSource,
     private val clockInChecker: ClockInChecker
-
 ) : ViewModel() {
 
     private val _signInError = MutableStateFlow<String?>(null)
@@ -22,21 +21,22 @@ class MainScreenViewModel(
     private val _success = MutableStateFlow<String?>(null)
     val success: Flow<String?> = _success.asStateFlow()
 
-    // Tracking if it's a clock-in (true) or clock-out (false)
+    // ADD THIS NEW STATE
     private val _isClockIn = MutableStateFlow<Boolean?>(null)
     val isClockIn: Flow<Boolean?> = _isClockIn.asStateFlow()
 
-    //for when user signs in successfully
+    // UPDATE THIS FUNCTION
     fun clearSuccess() {
         _success.value = null
-        _isClockIn.value = null
+        _isClockIn.value = null // Clear both together
     }
 
-    fun setSuccess(successMessage: String?) {
+    // UPDATE THIS FUNCTION TO ACCEPT BOOLEAN
+    fun setSuccess(successMessage: String?, isClockedIn: Boolean) {
         _success.value = successMessage
+        _isClockIn.value = isClockedIn
     }
 
-    //for when user fails to sign in
     fun clearSignInError() {
         _signInError.value = null
     }
@@ -47,6 +47,7 @@ class MainScreenViewModel(
 
     val colleagues = colleagueDataSource.getAllColleagues()
 
+    // UPDATE THIS FUNCTION COMPLETELY
     fun toggleClockInStatus(password: String) {
         viewModelScope.launch {
             when (val signInResult = clockInChecker.checkClockIn(password)) {
@@ -57,7 +58,7 @@ class MainScreenViewModel(
                     } else {
                         "You're good to go!" // User just clocked OUT
                     }
-                    setSuccess(message)
+                    setSuccess(message, isClockedIn)
                 }
                 is Resource.Error -> {
                     setSignInError(signInResult.message)
@@ -65,7 +66,4 @@ class MainScreenViewModel(
             }
         }
     }
-
-
-
 }

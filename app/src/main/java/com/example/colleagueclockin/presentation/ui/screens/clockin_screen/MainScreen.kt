@@ -131,20 +131,29 @@ fun MainAppContent(
 @Composable
 fun UserAddSignInSuccess(viewModel: MainScreenViewModel) {
     val success = viewModel.success.collectAsState(initial = null).value
+    val isClockIn = viewModel.isClockIn.collectAsState(initial = null).value
 
     if (success != null) {
+        // Add debug logging
+        println("Debug: success = $success, isClockIn = $isClockIn")
+
+        val backgroundColor = if (isClockIn == true) {
+            Color.Green // Clock IN = Green
+        } else {
+            Color.Red   // Clock OUT = Red
+        }
+
         Box(
             modifier = Modifier
-                .background(Color.Green) // Set the background color
-                .padding(8.dp) // Set padding for better spacing
+                .background(backgroundColor)
+                .padding(8.dp)
         ) {
             Text(
                 text = success,
-                color = Color.White // Set the text color
+                color = Color.White
             )
         }
 
-        // Launch coroutine to clear error after 5 seconds
         LaunchedEffect(Unit) {
             delay(5000)
             viewModel.clearSuccess()

@@ -22,9 +22,14 @@ class MainScreenViewModel(
     private val _success = MutableStateFlow<String?>(null)
     val success: Flow<String?> = _success.asStateFlow()
 
+    // Tracking if it's a clock-in (true) or clock-out (false)
+    private val _isClockIn = MutableStateFlow<Boolean?>(null)
+    val isClockIn: Flow<Boolean?> = _isClockIn.asStateFlow()
+
     //for when user signs in successfully
     fun clearSuccess() {
         _success.value = null
+        _isClockIn.value = null
     }
 
     fun setSuccess(successMessage: String?) {

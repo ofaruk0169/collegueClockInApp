@@ -43,21 +43,24 @@ class MainScreenViewModel(
     val colleagues = colleagueDataSource.getAllColleagues()
 
     fun toggleClockInStatus(password: String) {
-
         viewModelScope.launch {
-
             when (val signInResult = clockInChecker.checkClockIn(password)) {
-
                 is Resource.Success -> {
-                    // Clear the error on success
-                    setSuccess("You're good to go!")
+                    val isClockedIn = signInResult.data ?: false
+                    val message = if (isClockedIn) {
+                        "You're ready to begin!" // User just clocked IN
+                    } else {
+                        "You're good to go!" // User just clocked OUT
+                    }
+                    setSuccess(message)
                 }
-
                 is Resource.Error -> {
-                    // Set the error message on failure
                     setSignInError(signInResult.message)
                 }
             }
         }
     }
+
+
+
 }

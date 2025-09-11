@@ -73,7 +73,6 @@ class ColleagueDataSourceImpl (
 
     }
 
-
     override suspend fun toggleClockInStatus(
         id: Long,
         firstName: String,
@@ -94,7 +93,4 @@ class ColleagueDataSourceImpl (
             Resource.Error("Failed to update colleague: ${e.message}")
         }
     }
-
-
-
 }
